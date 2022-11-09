@@ -13,7 +13,41 @@ function clearAll() {
 }
 
 
+// function showMeme() {
+//   const randomMemeUrl = getRandomData('memes');
+//   const container = document.querySelector('.meme-content');
+//   const newImg = document.createElement('img');
+//   newImg.setAttribute('src', randomMemeUrl);
+
+//   clearAll() //clearing content before showing new
+
+//   container.appendChild(newImg);
+//   // console.log (randomMemeUrl);
+//   // console.log (container);
+
+
+// }
+
+//FETCHING MEMES
+var after = "";
+var memes = []
+
+
 function showMeme() {
+  fetch(`https://www.reddit.com/r/ProgrammerHumor.json?after=${after}`)
+    .then((response) => response.json())
+    .then((body) => {
+      after = body.data.after;
+      for (let index = 0; index < body.data.children.length; index++) {
+        if (body.data.children[index].data.post_hint === "image") {
+          memes.push(body.data.children[index].data.url_overridden_by_dest);
+        }
+      }
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+
   const randomMemeUrl = getRandomData('memes');
   const container = document.querySelector('.meme-content');
   const newImg = document.createElement('img');
@@ -27,7 +61,6 @@ function showMeme() {
 
 
 }
-
 
 function showJoke() {
   // Value is a string representing the joke
@@ -103,7 +136,7 @@ function getRandomData(type) {
 // ----------------------------------------------------
 
 // Source: https://www.thecoderpedia.com/blog/programming-memes/, Reddit
-const memes = ['https://i.redd.it/a0v87gwzoge61.jpg', 'https://i.redd.it/q29egav34ee61.jpg', 'https://i.redd.it/iij16swxjie61.jpg', 'https://i.redd.it/vek7dm2hrge61.jpg', 'https://www.testbytes.net/wp-content/uploads/2019/06/Untitled-8.png', 'https://miro.medium.com/max/1000/0*Ua695vjzFHV6VNOX.png', 'https://pbs.twimg.com/media/EKkPagPXkAA__Qo.jpg', 'https://code-love.com/wp-content/uploads/2019/03/download.jpeg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Programmer-while-sleeping.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Evolution-of-Memory-Storage-1024x996.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Error-in-Code-896x1024.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Coding-Meme-Code-Comments-be-Like-925x1024.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Internet-Explorer-Joke-915x1024.jpg'];
+// const memes = ['https://i.redd.it/a0v87gwzoge61.jpg', 'https://i.redd.it/q29egav34ee61.jpg', 'https://i.redd.it/iij16swxjie61.jpg', 'https://i.redd.it/vek7dm2hrge61.jpg', 'https://www.testbytes.net/wp-content/uploads/2019/06/Untitled-8.png', 'https://miro.medium.com/max/1000/0*Ua695vjzFHV6VNOX.png', 'https://pbs.twimg.com/media/EKkPagPXkAA__Qo.jpg', 'https://code-love.com/wp-content/uploads/2019/03/download.jpeg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Programmer-while-sleeping.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Evolution-of-Memory-Storage-1024x996.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Error-in-Code-896x1024.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Coding-Meme-Code-Comments-be-Like-925x1024.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Internet-Explorer-Joke-915x1024.jpg'];
 
 // Sourced from: http://www.devtopics.com/best-programming-jokes/
 const jokes = ['This statement', 'Eight bytes walk into a bar.  The bartender asks, “Can I get you anything?” “Yeah,” reply the bytes.  “Make us a double.”', 'There are only 10 kinds of people in this world: those who know binary and those who don’t.', 'All programmers are playwrights, and all computers are lousy actors.', 'Have you heard about the new Cray super computer?  It’s so fast, it executes an infinite loop in 6 seconds.', 'The generation of random numbers is too important to be left to chance.', 'Debugging: Removing the needles from the haystack.', '“Debugging” is like being the detective in a crime drama where you are also the murderer.', 'There are two ways to write error-free programs; only the third one works.', 'The best thing about a Boolean is even if you are wrong, you are only off by a bit.'];
