@@ -1,17 +1,12 @@
-/* 
-NO ACTION REQUIRED BY YOU
-
-Don't worry about this section.  These CSS styles are here to make the HTML document look cleaner, but are not part of the lesson.
-
-Just write your HTML however you want and these will automatically work.
-*/
-
 body {
     background-color: #1D2326;
     color: #BFA38A;
     font-family: monospace;
   }
-  
+  h1 {
+    margin-left: 120px;
+    font-family: monospace;
+  }
   main {
     display: flex;
     flex-direction: row;
@@ -26,10 +21,12 @@ body {
   
   p {
     color: #8097A6;
+    font-size: large;
   } 
   
   a {
-    color: white;
+    color: #BFA38A;
+    text-decoration: none;
   }
   
   a:hover {
