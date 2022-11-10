@@ -33,7 +33,7 @@ var after = "";
 var memes = []
 
 
-function showMeme() {
+$("#memebtn").click(function() {
   fetch(`https://www.reddit.com/r/ProgrammerHumor.json?after=${after}`)
     .then((response) => response.json())
     .then((body) => {
@@ -60,9 +60,9 @@ function showMeme() {
   // console.log (container);
 
 
-}
+});
 
-function showJoke() {
+$("#jokebtn").click(function() {
   // Value is a string representing the joke
   const randomJokeText = getRandomData('jokes');
   const newP = document.createElement('p');
@@ -71,10 +71,10 @@ function showJoke() {
   clearAll();
 
   document.querySelector('.joke-content').appendChild(newP);
-}
+});
 
 
-function showQuote() {
+$("#quotebtn").click(function() {
   const randomQuote = getRandomData('quotes')
   console.log (randomQuote);
   const quote = document.createElement('p')
@@ -86,10 +86,10 @@ function showQuote() {
   const container = document.querySelector(".quote-content")
   container.appendChild(quote);
   container.appendChild(author)
-}
+});
 
 
-function showRiddle() {
+$("#riddlebtn").click(function() {
   const randomRiddle = getRandomData('riddles');
   console.log(randomRiddle);
 
@@ -110,7 +110,7 @@ function showRiddle() {
 
   container.appendChild(questionElem)
   container.appendChild(answerElem)
-}
+});
 
 function revealAnswers() {
   const riddleContainer = document.querySelector(".riddle-content")
@@ -129,19 +129,11 @@ function getRandomData(type) {
 }
 
 
-// ----------------------------------------------------
-// NO NEED TO CHANGE ANYTHING BELOW but...
-// feel free to add/remove items from these lists to customize
-// your results
-// ----------------------------------------------------
 
-// Source: https://www.thecoderpedia.com/blog/programming-memes/, Reddit
-// const memes = ['https://i.redd.it/a0v87gwzoge61.jpg', 'https://i.redd.it/q29egav34ee61.jpg', 'https://i.redd.it/iij16swxjie61.jpg', 'https://i.redd.it/vek7dm2hrge61.jpg', 'https://www.testbytes.net/wp-content/uploads/2019/06/Untitled-8.png', 'https://miro.medium.com/max/1000/0*Ua695vjzFHV6VNOX.png', 'https://pbs.twimg.com/media/EKkPagPXkAA__Qo.jpg', 'https://code-love.com/wp-content/uploads/2019/03/download.jpeg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Programmer-while-sleeping.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Evolution-of-Memory-Storage-1024x996.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Error-in-Code-896x1024.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Coding-Meme-Code-Comments-be-Like-925x1024.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Internet-Explorer-Joke-915x1024.jpg'];
 
-// Sourced from: http://www.devtopics.com/best-programming-jokes/
+
 const jokes = ['This statement', 'Eight bytes walk into a bar.  The bartender asks, “Can I get you anything?” “Yeah,” reply the bytes.  “Make us a double.”', 'There are only 10 kinds of people in this world: those who know binary and those who don’t.', 'All programmers are playwrights, and all computers are lousy actors.', 'Have you heard about the new Cray super computer?  It’s so fast, it executes an infinite loop in 6 seconds.', 'The generation of random numbers is too important to be left to chance.', 'Debugging: Removing the needles from the haystack.', '“Debugging” is like being the detective in a crime drama where you are also the murderer.', 'There are two ways to write error-free programs; only the third one works.', 'The best thing about a Boolean is even if you are wrong, you are only off by a bit.'];
 
-// source: https://www.goodreads.com/quotes/tag/programming
 const quotes = [
   { quote: 'Programs must be written for people to read, and only incidentally for machines to execute.', author: 'Harold Abelson'},
   { quote: 'Programming today is a race between software engineers striving to build bigger and better idiot-proof programs, and the Universe trying to produce bigger and better idiots. So far, the Universe is winning.', author: 'Rick Cook' },
