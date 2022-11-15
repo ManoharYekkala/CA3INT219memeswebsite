@@ -20,8 +20,8 @@ imageFileInput.addEventListener("change", (e) => {
         topTextInput.value,
         bottomTextInput.value
       );
-    },
-    { once: true }
+    }
+    // { once: true }
   );
 });
 
