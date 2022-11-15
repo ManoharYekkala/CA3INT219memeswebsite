@@ -64,7 +64,7 @@ $("#memebtn").click(function() {
 });
 
 $("#createbtn").click(function () {
-  window.location.href = "/creator/index.html";
+  window.location.href = "creator/index.html";
 });
 
 $("#jokebtn").click(function() {
